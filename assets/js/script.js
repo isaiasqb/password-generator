@@ -1,18 +1,27 @@
 // Assignment code here
-var specialChar = "!#$%&()*+,-./:;<=>?@[]^_{|}~";
-var letters = "abcdefghyjklmnopqrst";
+var specialChar = "!#$%&()*+,-./:;<=>?@[^_{}"
+var lowerChar = "abcdefghyjklmnopqrst";
+var upperChar = "ABCDEFGHYJKLMNOPQRSTWXYZ";
+var numericalChar = "1234567890";
+
 var randomness = function(multiplier) {
   var randomNumber = Math.floor((Math.random() * multiplier))
   return randomNumber;
 }
 
+var randomSpecial = specialChar[randomness(specialChar.length)];
+var randomLower = lowerChar[randomness(lowerChar.length)];
+var randomUpper = upperChar[randomness(upperChar.length)];
+var randomNumerical = numericalChar[randomness(numericalChar.length)];
+
 
 function generatePassword (){
   // use parseInt to convert the value of the promt to a numeric value
-  var promptLength = parseInt(prompt("How Many Characters would you like your password to have? \nPlease choose a number between 8 - 128"), 10);
+  var confirmedLength = parseInt(prompt("How Many Characters would you like your password to have? \nPlease choose a number between 8 - 128"), 10);
   // confirming that the value has been turned into a prompt
-  // console.log(typeof promptLength)
-  if (promptLength >= 8 && promptLength <= 128){
+  // console.log(typeof confirmedLength)
+  if (confirmedLength >= 8 && confirmedLength <= 128){
+    console.log("you selected the length of: " + confirmedLength + " Characters");
     
       var confirmSpecial = confirm("Would You like to include Special Characters?");
       if (confirmSpecial){
@@ -46,19 +55,25 @@ function generatePassword (){
         alert ("Please select at least ONE criteria")
         return false;
       }
-    return "you selected the length of: " + promptLength + " Characters";
-
-
-  } 
-  else {
-    console.log(typeof promptLength)
+    
+    // var randomPass = function() {
+    // for (var i = 0; i < confirmedLength; i++) {
+    //     var value = ;
+    //     return value;
+    //   };
+    // };
+   
+    for (var i = 0; i < confirmedLength; i++){
+      var generatedPass = randomSpecial + randomLower + randomUpper + randomNumerical;
+      return generatedPass;
+    };
+    
+  
+  } else {
+    console.log(typeof confirmedLength)
     alert("Please choose a valid number");
     return false;
   };
-
-
-
-
 }
 
 // Get references to the #generate element
