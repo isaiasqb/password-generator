@@ -4,24 +4,24 @@ var upperChar = ["ABCDEFGHYJKLMNOPQRSTWXYZ"];
 var lowerChar = ["abcdefghyjklmnopqrstuvwxyz"]
 var numericalChar = ["1234567890"];
 
-// select the ul element form the HTML document with the ID of criteria list
+// Select the <ul> element from the HTML document with the ID of criteria-list
 var criteriaList = document.querySelector("#criteria-list");
 
-// function expresson for creating a message with the user's selected criteria
+// Function expresson for creating a message with the user's selected criteria, the parameter is a custom message 
 var listCriteria = function (message){
   var criteriaInfo = document.createElement("li")
   criteriaInfo.textContent = message;
   criteriaList.appendChild(criteriaInfo)
 };
 
-// declare function to generate password
+// Declare function to generate password
 function generatePassword (){
   // reset the values of the password pool and the content of the text area for the password
   var allCharacters = "";  
   var valueGenerated = "";
   criteriaList.innerHTML = null;
 
-  // Ask user for prefered criteria
+  // ask user for prefered criteria using confirm prompts
   // use parseInt to convert the value of the promt to a numeric value
   var confirmLength = parseInt(prompt("How Many Characters would you like your password to have? \nPlease choose a number between 8 - 128"), 10);
   if (confirmLength >= 8 && confirmLength <= 128){
@@ -64,13 +64,14 @@ function generatePassword (){
         return false;
       };
 
-    // for loop that creates a random selection of characters "the password" following the criteria given by the user
+    // for loop that creates a random selection of characters: "the password". following the criteria given by the user
     for (var i = 0; i < confirmLength; i++){
       var randomNum = Math.floor((Math.random() * allCharacters.length));
       valueGenerated = valueGenerated + allCharacters[randomNum]
-      // we cna confirm the values with console.log(valueGenerated);
-      // we cna confirm the values with console.log(allCharacters);
+      // we can confirm the values with console.log(valueGenerated);
+      // we can confirm the values with console.log(allCharacters);
     };   
+    // THE PASSWORD, a string created from random picks from the general pool of characters created by the preferences of the user.
     return valueGenerated;
 
   // stops the application if the user did not select a valid length option
@@ -80,13 +81,13 @@ function generatePassword (){
   };
 };
 
-// Get references to the #generate button element
+// assign the #generate buttoin to a variable
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword(); //the generatePassword function returns the value generated in the for loop
-  // select the testarea element form the document and insert the value of the generated password
+  // select the textarea element from the document and insert the value of the generated password
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
