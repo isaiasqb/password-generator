@@ -3,19 +3,18 @@ var specialChar = ["!#$%&()*-./:;<=>?@[_{}"]
 var upperChar = ["ABCDEFGHYJKLMNOPQRSTWXYZ"];
 var lowerChar = ["abcdefghyjklmnopqrstuvwxyz"]
 var numericalChar = ["1234567890"];
-// var allCharacters = '';
-var valueGenerated = "";
 
 function generatePassword (){
-
-
   // use parseInt to convert the value of the promt to a numeric value
   var confirmLength = parseInt(prompt("How Many Characters would you like your password to have? \nPlease choose a number between 8 - 128"), 10);
 
   if (confirmLength >= 8 && confirmLength <= 128){
     console.log("you selected the " + typeof confirmLength +": "+ confirmLength + " Characters");
-    var allCharacters = '';  
-      console.log(allCharacters + "initial value");
+    
+    var allCharacters = "";  
+    var valueGenerated = "";
+      console.log(allCharacters + "allCharacters string initial value is " + allCharacters.length);
+
 
       var confirmSpecial = confirm("Would You like to include Special Characters?");
       if (confirmSpecial){
