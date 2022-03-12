@@ -3,19 +3,20 @@ var specialChar = ["!#$%&()*-./:;<=>?@[_{}"]
 var upperChar = ["ABCDEFGHYJKLMNOPQRSTWXYZ"];
 var lowerChar = ["abcdefghyjklmnopqrstuvwxyz"]
 var numericalChar = ["1234567890"];
-var allCharacters = '';
+// var allCharacters = '';
 var valueGenerated = "";
 
-
-
 function generatePassword (){
-  allCharacters = "";
+
+
   // use parseInt to convert the value of the promt to a numeric value
   var confirmLength = parseInt(prompt("How Many Characters would you like your password to have? \nPlease choose a number between 8 - 128"), 10);
 
   if (confirmLength >= 8 && confirmLength <= 128){
     console.log("you selected the " + typeof confirmLength +": "+ confirmLength + " Characters");
-    
+    var allCharacters = '';  
+      console.log(allCharacters + "initial value");
+
       var confirmSpecial = confirm("Would You like to include Special Characters?");
       if (confirmSpecial){
         console.log("You chose to Use Special Characters");
@@ -60,7 +61,9 @@ function generatePassword (){
       console.log(valueGenerated);
       console.log(allCharacters);
     }   
+    var allCharacters = '';
     return valueGenerated;
+
   
   } else {
     alert("Please choose a valid number");
@@ -75,8 +78,9 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
+ //**************reset the form to it's original value
   passwordText.value = password;
+
 }
 
 // Add event listener to generate button
