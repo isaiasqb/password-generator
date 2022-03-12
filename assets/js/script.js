@@ -7,12 +7,9 @@ var allCharacters = '';
 var valueGenerated = "";
 
 
-// var randomSpecial = specialChar[randomness(specialChar.length)];
-// var randomLower = lowerChar[randomness(lowerChar.length)];
-// var randomUpper = upperChar[randomness(upperChar.length)];
-// var randomNumerical = numericalChar[randomness(numericalChar.length)];
 
 function generatePassword (){
+  allCharacters = "";
   // use parseInt to convert the value of the promt to a numeric value
   var confirmLength = parseInt(prompt("How Many Characters would you like your password to have? \nPlease choose a number between 8 - 128"), 10);
 
@@ -60,9 +57,8 @@ function generatePassword (){
     for (var i = 0; i < confirmLength; i++){
       var randomNum = Math.floor((Math.random() * allCharacters.length));
       valueGenerated = valueGenerated + allCharacters[randomNum]
-      // var value = allCharacters + " " + randomNum;
-      // return valuePass + " - "+confirmLength; 
       console.log(valueGenerated);
+      console.log(allCharacters);
     }   
     return valueGenerated;
   
